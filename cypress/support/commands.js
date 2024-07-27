@@ -308,25 +308,7 @@ Cypress.Commands.add('atualizaImagemProdutoPOST', () => {
   //       console.log(response)
   //   })
     
-// Cypress.Commands.add('chamadaToken', (email, password) => { 
-//   cy.request({
-//       method: 'GET',
-//       // url: `${API_URL}/me`,
-//       url: `https://api.typeform.com/me`,
-//       headers: { authorization: authorization }
-//     }).should(({ status, body }) => {
-//       const { alias, email, language, user_id, tracking_id } = body
-      
-//      resulstatus = status;
-//       console.log(body)
-//       expect(status).to.eq(200)
-//       expect(alias).to.eq('Eduardo Matias')
-//       expect(email).to.eq(Cypress.env('email'))
-//       expect(language).to.eq('en')
-//       expect(user_id).to.eq('01F4VQF6HGD4PS7ASZ645YQ22P')
-//       expect(tracking_id).to.eq(18154918)
-//     }) 
-// })
+
 
 
 
