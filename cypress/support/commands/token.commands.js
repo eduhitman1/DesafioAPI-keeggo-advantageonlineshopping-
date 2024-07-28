@@ -1,12 +1,7 @@
-import 'cypress-file-upload';
-const loginAcesso = require('../fixtures/jsonLoginAcesso.json')
-const { expect } = require("chai");
-
-const authorization = `Bearer ${Cypress.env('token')}`
+const loginAcesso = require('../../fixtures/jsonLoginAcesso.json')
 
 var resultBody;
 var resultStatus;
-
 var tokenAcesso
 
   Cypress.Commands.add('token', () => { 
