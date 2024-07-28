@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import './commands/pesquisaProd.commands'
+import './commands/token.commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
