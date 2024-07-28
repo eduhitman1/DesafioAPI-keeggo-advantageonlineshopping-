@@ -1,7 +1,6 @@
 import 'cypress-file-upload';
 const { expect } = require("chai");
 
-
 const authorization = `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3d3cuYWR2YW50YWdlb25saW5lc2hvcHBpbmcuY29tIiwidXNlcklkIjozMzk1MTU3ODIsInN1YiI6ImlhbWVkdWFyZG9uZWlsbCIsInJvbGUiOiJVU0VSIn0.o98m5JVg5pg1KfLNmAPITZhmO2x3h44t5GSoN9KicgY`
 // ***********************************************
 // This example commands.js shows you how to
@@ -29,7 +28,8 @@ const authorization = `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3d
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-var resulstatus ;
+var resultBody;
+var resultStatus;
 
 Cypress.Commands.add('pesquisaProdutoViaGET', () => { 
     cy.request({
@@ -39,20 +39,27 @@ Cypress.Commands.add('pesquisaProdutoViaGET', () => {
         headers: { authorization: authorization }
       }).then((response) => {
         console.log(response.body)
-        expect(JSON.stringify(response.body)).to.include("HP ENV")
-        expect(response).to.have.property('status',200)
+
+          resultBody = JSON.stringify(response.body) 
+          resultStatus = response
     })
     }) 
 
+    Cypress.Commands.add('verificarProdutoNaPesquisaViaGET', () => {   
+      expect(resultBody).to.include("HP ENV")
+    }) 
+
+    Cypress.Commands.add('validaRetornoPesquisaViaGET', () => {   
+      expect(resultStatus).to.have.property('status',200)
+    })
+
 
 Cypress.Commands.add('atualizaImagemProdutoPOST', () => { 
-  
   cy.fixture("logo.jpg", 'binary')
   .then((file) => Cypress.Blob.binaryStringToBlob(file))
   .then((blob) => {
       var formdata = new FormData();
       formdata.append("file", blob, "logo.jpg");
-
       cy.request({
           url: "https://www.advantageonlineshopping.com/catalog/api/v1/product/image/339515782/caminho/azul?product_id=16",
           method: "POST",
@@ -61,9 +68,19 @@ Cypress.Commands.add('atualizaImagemProdutoPOST', () => {
               'content-type': 'multipart/form-data',      
           },
           body: formdata
-      }).should(({ status, body, response }) => {
+      }).should(({ status, body}) => {
               console.log(body)
               console.log(status)
+              
+
+              const object ={
+                byteLength: 156,
+                detached: false,
+                maxByteLength: 156,
+                resizable: false
+              }
+              assert.isObject(object, 'value is object') 
+
               expect(status).to.eq(200)
       
       // .then(response => {
@@ -76,6 +93,12 @@ Cypress.Commands.add('atualizaImagemProdutoPOST', () => {
       // .its('status').should('be.equal', 200)
   })
 })
+
+
+
+
+
+
 //   cy.readFile(`cypress/fixtures/logo.jpg`).then((str) => {
 //     let blob = new Blob([str], { type: "multipart/form-data; boundary=----CypressFormDataBoundary" });
 //     let formData = new FormData();
