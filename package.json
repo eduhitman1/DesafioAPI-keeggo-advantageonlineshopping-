@@ -18,7 +18,15 @@
     "cypress-file-upload": "^5.0.8"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "cypress/e2e/step_definitions"
+    "stepDefinitions": "cypress/support/step-definitions/",
+    "nonGlobalStepDefinitions": false,
+    "filterSpecs": true,
+    "omitFiltered": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }

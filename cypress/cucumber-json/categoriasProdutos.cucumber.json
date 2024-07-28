@@ -1,0 +1,122 @@
+[
+  {
+    "keyword": "Funcionalidade",
+    "name": "serviço de busca produto e upload de imagem",
+    "line": 3,
+    "id": "serviço-de-busca-produto-e-upload-de-imagem",
+    "tags": [],
+    "uri": "categoriasProdutos.feature",
+    "elements": [
+      {
+        "id": "serviço-de-busca-produto-e-upload-de-imagem;get-produto:-validar-a-busca-de-um-produto-via-request",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "GET produto: validar a busca de um produto via request",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Dado ",
+            "line": 6,
+            "name": "que possuo um token de acesso",
+            "result": {
+              "status": "passed",
+              "duration": 1139000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 9,
+            "name": "acesso busca de um produto via request GET catalog",
+            "result": {
+              "status": "passed",
+              "duration": 370000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "E ",
+            "line": 10,
+            "name": "verifico se a lista exibe somente produtos conforme a busca",
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Então ",
+            "line": 11,
+            "name": "valido o status code da resposta do serviço",
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "serviço-de-busca-produto-e-upload-de-imagem;post-produto:-validar-que-a-imagem-do-produto-foi-atualizada",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "POST produto: validar que a imagem do produto foi atualizada",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Dado ",
+            "line": 6,
+            "name": "que possuo um token de acesso",
+            "result": {
+              "status": "passed",
+              "duration": 418000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Quando ",
+            "line": 14,
+            "name": "acesso arquivo updade via request POST catalog",
+            "result": {
+              "status": "passed",
+              "duration": 682000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "E ",
+            "line": 15,
+            "name": "verifico que o objeto foi atualização corretamente",
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "E ",
+            "line": 16,
+            "name": "verifico o id da image nova inserida",
+            "result": {
+              "status": "passed",
+              "duration": 15000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Entao ",
+            "line": 17,
+            "name": "valido que o código de resposta da requisição é 200",
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
