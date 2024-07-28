@@ -30,26 +30,6 @@ var tokenAcesso
     })
 
 
-Cypress.Commands.add('pesquisaProdutoViaGET', () => { 
-    cy.request({
-        method: 'GET',
-        url: `${Cypress.env('base_url')}/catalog/api/v1/products/search?name=HP ENVY x360 - 15t Laptop`,
-        headers: { authorization: authorization }
-      }).then((response) => {
-        console.log(response.body)
-          resultBody = JSON.stringify(response.body) 
-          resultStatus = response
-    })
-    }) 
-
-    Cypress.Commands.add('verificarProdutoNaPesquisaViaGET', () => {   
-      expect(resultBody).to.include("HP ENV")
-    }) 
-
-    Cypress.Commands.add('validaRetornoPesquisaViaGET', () => {   
-      expect(resultStatus).to.have.property('status',200)
-    })
-
 Cypress.Commands.add('atualizaImagemProdutoPOST', () => { 
   cy.fixture("logo.jpg", 'binary')
   .then((file) => Cypress.Blob.binaryStringToBlob(file))
@@ -70,6 +50,7 @@ Cypress.Commands.add('atualizaImagemProdutoPOST', () => {
               statusCode = status
   })
 })
+})
 
 Cypress.Commands.add('verificaAtributosObjeto', () => { 
   const object ={
@@ -89,16 +70,6 @@ Cypress.Commands.add('validaRetornoDeServicoPOST', () => {
        expect(statusCode).to.eq(200)
 })
 
-Cypress.Commands.add('tokenAcesso', () => { 
-      cy.request({
-          url: `${Cypress.env('base_url')}/accountservice/accountrest/api/v1/login`,
-          method: "POST",
-          headers: {
-              'content-type': 'application/json',      
-          },
-          body: loginAcesso
-      })
-    })
-  })
+
 
  
