@@ -133,7 +133,7 @@ Cypress.Commands.add('atualizaImagemProdutoPOST', () => {
   //     headers: {
   //       'content-type': 'multipart/form-data',
   //       'content-Length': '<calculated when request is sent>',
-  //       'host': '<calculated when request is sent>',
+  
   //     },
   //     files: {
   //       file: "https://www.infojobs.com.br/HandlerImageDocs.ashx?id=683659F814ADC7D530E12FCAEE44BC97&type=2&path=082813C7105ECF023A1DE2417E2006B7343EB7DC7D4FAA696BEB5840CC176CEA&server=0"
